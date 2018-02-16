@@ -4,7 +4,7 @@ namespace DependencyInjectionTutorial.App.Tests
 {
     public class EmailValidatorTests
     {
-        private readonly EmailValidator _validator;
+        private readonly IEmailValidator _validator;
         private string _email;
 
         public EmailValidatorTests()

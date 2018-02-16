@@ -4,10 +4,19 @@ namespace DependencyInjectionTutorial.App
 {
     public class UsersController
     {
+        private readonly IEmailValidator _emailValidator;
+        private readonly IActivationLinkGenerator _activationLinkGenerator;
+
+        public UsersController(IEmailValidator emailValidator, IActivationLinkGenerator activationLinkGenerator)
+        {
+            _emailValidator = emailValidator;
+            _activationLinkGenerator = activationLinkGenerator;
+        }
+
         public void RegisterUser(string email)
         {
             // Check if email is valid
-            if (new EmailValidator().Validate(email) == false)
+            if (_emailValidator.Validate(email) == false)
             {
                 throw new ArgumentException("Invalid email address");
             }
@@ -29,8 +38,7 @@ namespace DependencyInjectionTutorial.App
             UsersDatabase.InsertUser(newUser);
 
             // Generate activation link
-            string registrationLink =
-                new ActivationLinkGenerator().GenerateLink(newUser.Email, newUser.RegistrationToken);
+            string registrationLink = _activationLinkGenerator.GenerateLink(newUser.Email, newUser.RegistrationToken);
 
             EmailService.RegistrationEmail(newUser.Email, registrationLink);
         }

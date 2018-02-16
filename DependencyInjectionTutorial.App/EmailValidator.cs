@@ -2,7 +2,7 @@
 
 namespace DependencyInjectionTutorial.App
 {
-    public class EmailValidator
+    public class EmailValidator : IEmailValidator
     {
         private const string EMAIL_REGEX = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
 

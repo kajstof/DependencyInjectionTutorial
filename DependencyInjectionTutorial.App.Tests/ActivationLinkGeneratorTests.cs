@@ -5,7 +5,7 @@ namespace DependencyInjectionTutorial.App.Tests
 {
     public class ActivationLinkGeneratorTests
     {
-        private readonly ActivationLinkGenerator _generator;
+        private readonly IActivationLinkGenerator _generator;
         private string _email = "some-email";
         private string _token = "a-token";
 
