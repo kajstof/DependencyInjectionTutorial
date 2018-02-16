@@ -4,7 +4,7 @@
     {
         public string GenerateLink(string email, string token)
         {
-            return $"http://myapp.com/confirm?email={email}&taken={token}";
+            return $"http://myapp.com/confirm?email={email}&token={token}";
         }
     }
 }
