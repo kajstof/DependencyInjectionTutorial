@@ -4,11 +4,13 @@ namespace DependencyInjectionTutorial.App
 {
     public class UsersController
     {
+        private readonly IEmailService _emailService;
         private readonly IEmailValidator _emailValidator;
         private readonly IActivationLinkGenerator _activationLinkGenerator;
 
-        public UsersController(IEmailValidator emailValidator, IActivationLinkGenerator activationLinkGenerator)
+        public UsersController(IEmailService emailService, IEmailValidator emailValidator, IActivationLinkGenerator activationLinkGenerator)
         {
+            _emailService = emailService;
             _emailValidator = emailValidator;
             _activationLinkGenerator = activationLinkGenerator;
         }
@@ -40,7 +42,7 @@ namespace DependencyInjectionTutorial.App
             // Generate activation link
             string registrationLink = _activationLinkGenerator.GenerateLink(newUser.Email, newUser.RegistrationToken);
 
-            EmailService.RegistrationEmail(newUser.Email, registrationLink);
+            _emailService.RegistrationEmail(newUser.Email, registrationLink);
         }
     }
 }

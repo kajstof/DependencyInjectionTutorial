@@ -2,9 +2,9 @@
 
 namespace DependencyInjectionTutorial.App
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
-        public static void RegistrationEmail(string newUserEmail, string registrationLink)
+        public void RegistrationEmail(string newUserEmail, string registrationLink)
         {
             throw new NotImplementedException();
         }
