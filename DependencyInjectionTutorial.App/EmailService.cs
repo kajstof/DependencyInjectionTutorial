@@ -4,9 +4,17 @@ namespace DependencyInjectionTutorial.App
 {
     public class EmailService : IEmailService
     {
-        public void RegistrationEmail(string newUserEmail, string registrationLink)
+        private readonly IEmailTemplateGenerator _templateGenerator;
+
+        public EmailService(IEmailTemplateGenerator templateGenerator)
         {
-            throw new NotImplementedException();
+            _templateGenerator = templateGenerator;
+        }
+        
+        public void RegistrationEmail(string email, string link)
+        {
+            string template = _templateGenerator.ActivationTemplate(link);
+            // Send email...
         }
     }
 }
