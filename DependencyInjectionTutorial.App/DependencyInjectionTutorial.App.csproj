@@ -4,4 +4,7 @@
     <AssemblyName>DependencyInjectionTutorial.App</AssemblyName>
     <RootNamespace>DependencyInjectionTutorial.App</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+  </ItemGroup>
 </Project>
